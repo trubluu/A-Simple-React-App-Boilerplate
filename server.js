@@ -12,13 +12,13 @@ var path = require('path');
 
 var compiler = webpack(webpackConfig);
 var server = new WebpackDevServer(compiler, {
-  contentBase: './',
-  hot: true,
-  filename: 'bundle.js',
-  publicPath: '/',
-  stats: {
+    contentBase: './',
+    hot: true,
+    filename: './build/bundle.js',
+    publicPath: '/',
+    stats: {
     colors: true,
-  },
-  historyApiFallback: true,
+    },
+    historyApiFallback: true,
 });
 server.listen(8080, 'localhost', function() {});

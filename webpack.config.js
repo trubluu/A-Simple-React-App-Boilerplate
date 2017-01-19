@@ -1,39 +1,24 @@
-var path = require('path');
+const path = require('path');
 var webpack = require("webpack");
  
-var config = {
-  context: path.join(__dirname, 'src'),
+const config = {
+  context: path.join(__dirname, "src"),
   entry: [
-    './index.js',
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080/',
+    './index.js', 
   ],
   output: {
-    path: path.join(__dirname, 'www'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/',
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   module: {
-    loaders: [
+    rules: [
       {
+        use: 'babel-loader',
         test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel'],
-      },
-    ],
-  },
-  resolveLoader: {
-    root: [
-      path.join(__dirname, 'node_modules'),
-    ],
-  },
-  resolve: {
-    root: [
-      path.join(__dirname, 'node_modules'),
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
 };
 module.exports = config;
